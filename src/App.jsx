@@ -1,16 +1,9 @@
-
-import "./App.css";
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/Routes';
+import './App.css'
 
 function App() {
-  
-
-  return (
-    <>
-      <div>
-        <h1 className="bg-red-700 text-center ">Tailwindcss Working</h1>
-      </div>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
