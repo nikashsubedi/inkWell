@@ -1,38 +1,19 @@
+// routes/Routes.jsx
 import { createBrowserRouter } from 'react-router-dom';
-import Test from '../test/Test';
 import React from 'react';
-import CardList from '../card/CardList'; // Import the CardList component
+import AuthContainer from '../components/auth/AuthContainer'; // Assuming you have an AuthContainer component
+import Dashboard from '../components/layout/DashboardLayout'; // Assuming you have a Dashboard component
 
-const router = createBrowserRouter(
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <AuthContainer />,
+  },
 
-  [
-
-    {
-      path: 'test',
-
-      element: <Test />,
-    },
-
-     {
-      path: '/',
-
-      element: <Test />,
-    },
-
-    {
-      path: '/cards',
-
-      element: <CardList />,
-    },
-    {
-      path: '/cards', // New path to display all 1000 cards
-      element: <CardList />,
-    },
-   
-   
-
-
-
-  ]);
+   {
+    path: '/dashboard',
+    element: <Dashboard />,
+  },
+]);
 
 export default router;
