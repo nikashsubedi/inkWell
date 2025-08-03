@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/SupabaseAuthContext';
 import { 
   PenTool, 
   Eye, 
@@ -27,7 +27,7 @@ const SlidingAuth = () => {
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   
-  const { login, signup } = useAuth();
+  const { signIn, signUp } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -84,9 +84,9 @@ const SlidingAuth = () => {
     
     try {
       if (isSignUp) {
-        await signup(formData.name, formData.email, formData.password);
+        await signUp(formData.email, formData.password, formData.name);
       } else {
-        await login(formData.email, formData.password);
+        await signIn(formData.email, formData.password);
       }
       navigate(from, { replace: true });
     } catch (error) {

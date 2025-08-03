@@ -54,6 +54,7 @@ A modern, developer-focused blogging platform inspired by dev.to - built with Re
 ### Prerequisites
 - Node.js 16+ 
 - npm or yarn
+- Supabase account (free tier available)
 
 ### Installation
 
@@ -68,12 +69,28 @@ cd inkWell
 npm install
 ```
 
-3. **Start the development server**
+3. **Set up Supabase**
+   - Create a new project at [supabase.com](https://supabase.com)
+   - Copy your project URL and anon key from Settings > API
+   - Run the SQL schema from `supabase/schema.sql` in your Supabase SQL editor
+   - Run the functions from `supabase/functions.sql` in your Supabase SQL editor
+
+4. **Configure environment variables**
+```bash
+cp .env.example .env
+```
+Edit `.env` and add your Supabase credentials:
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+5. **Start the development server**
 ```bash
 npm run dev
 ```
 
-4. **Open your browser**
+6. **Open your browser**
 Navigate to `http://localhost:5173`
 
 ## 🛠️ Tech Stack
@@ -84,7 +101,10 @@ Navigate to `http://localhost:5173`
 - **Routing**: React Router DOM 7.7.1
 - **Icons**: Lucide React 0.526.0
 - **Markdown**: React Markdown
-- **Storage**: LocalStorage (for demo)
+- **Backend**: Supabase (PostgreSQL + Auth + Storage)
+- **Database**: PostgreSQL with Row Level Security
+- **Authentication**: Supabase Auth with email verification
+- **Storage**: Supabase Storage for images and files
 - **Font**: Inter (via @fontsource/inter)
 
 ## 📁 Project Structure
@@ -93,24 +113,36 @@ Navigate to `http://localhost:5173`
 src/
 ├── components/
 │   ├── auth/
-│   │   ├── Login.jsx          # Beautiful login page
-│   │   └── Signup.jsx         # Registration with validation
-│   ├── AllPosts.jsx           # Grid view of all posts
-│   ├── CreatePost.jsx         # Rich markdown editor
-│   ├── Dashboard.jsx          # Personal dashboard
-│   ├── Home.jsx               # Main feed (dev.to style)
-│   ├── Layout.jsx             # App layout wrapper
-│   ├── Navbar.jsx             # Navigation component
-│   ├── PostView.jsx           # Individual post page
-│   ├── ProtectedRoute.jsx     # Route protection
-│   └── Sidebar.jsx            # Community sidebar
+│   │   ├── SlidingAuth.jsx     # Modern sliding auth form
+│   │   ├── Login.jsx           # Login page (legacy)
+│   │   └── Signup.jsx          # Registration page (legacy)
+│   ├── AllPosts.jsx            # Grid view of all posts
+│   ├── CreatePost.jsx          # Rich markdown editor
+│   ├── Dashboard.jsx           # Personal dashboard
+│   ├── Home.jsx                # Main feed (dev.to style)
+│   ├── Layout.jsx              # App layout wrapper
+│   ├── Navbar.jsx              # Navigation component
+│   ├── PostView.jsx            # Individual post page
+│   ├── ProtectedRoute.jsx      # Route protection
+│   └── Sidebar.jsx             # Community sidebar
 ├── context/
-│   └── AuthContext.jsx        # Authentication state
+│   ├── AuthContext.jsx         # LocalStorage auth (legacy)
+│   └── SupabaseAuthContext.jsx # Supabase authentication
+├── hooks/
+│   └── usePosts.js             # Custom hook for post operations
+├── services/
+│   ├── postService.js          # Post CRUD operations
+│   └── commentService.js       # Comment management
+├── lib/
+│   └── supabase.js             # Supabase client configuration
 ├── routes/
-│   └── Routes.jsx             # App routing config
-├── card/                      # Legacy card components
-├── test/                      # Test components
-└── assets/                    # Static assets
+│   └── Routes.jsx              # App routing config
+├── card/                       # Legacy card components
+├── test/                       # Test components
+└── assets/                     # Static assets
+supabase/
+├── schema.sql                  # Database schema
+└── functions.sql               # Custom SQL functions
 ```
 
 ## 🎯 Key Features Comparison with Dev.to
@@ -174,11 +206,13 @@ InkWell follows dev.to's design principles:
 
 ## 🔮 Future Enhancements
 
-### Phase 1: Backend Integration
-- [ ] Replace LocalStorage with Firebase/Supabase
-- [ ] Real user authentication
-- [ ] Image upload capabilities
-- [ ] Email notifications
+### Phase 1: Backend Integration (🚧 IN PROGRESS)
+- [x] Replace LocalStorage with Supabase
+- [x] Real user authentication with email verification
+- [x] Image upload capabilities with Supabase Storage
+- [x] Email notifications and password reset
+- [x] Database schema for posts, users, and comments
+- [x] Row Level Security (RLS) policies
 
 ### Phase 2: Advanced Features
 - [ ] User profiles and following
