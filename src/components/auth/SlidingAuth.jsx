@@ -161,44 +161,44 @@ const SlidingAuth = () => {
                 Create Account
               </h1>
               
-              <div className="flex space-x-2 mb-4">
-                <button 
-                  type="button" 
-                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
-                  style={{
-                    border: '1px solid #ddd',
-                    width: '35px',
-                    height: '35px',
-                    margin: '0 3px'
-                  }}
-                >
-                  <Facebook className="w-4 h-4 text-white" />
-                </button>
-                <button 
-                  type="button" 
-                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
-                  style={{
-                    border: '1px solid #ddd',
-                    width: '35px',
-                    height: '35px',
-                    margin: '0 3px'
-                  }}
-                >
-                  <Github className="w-4 h-4 text-white" />
-                </button>
-                <button 
-                  type="button" 
-                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
-                  style={{
-                    border: '1px solid #ddd',
-                    width: '35px',
-                    height: '35px',
-                    margin: '0 3px'
-                  }}
-                >
-                  <Linkedin className="w-4 h-4 text-white" />
-                </button>
-              </div>
+              <div className="flex justify-center space-x-2 mb-4">
+    <button 
+      type="button" 
+      className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+      style={{
+        border: '1px solid #ddd',
+        width: '35px',
+        height: '35px',
+        margin: '0 3px'
+      }}
+    >
+      <Facebook className="w-4 h-4 text-white" />
+    </button>
+    <button 
+      type="button" 
+      className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+      style={{
+        border: '1px solid #ddd',
+        width: '35px',
+        height: '35px',
+        margin: '0 3px'
+      }}
+    >
+      <Github className="w-4 h-4 text-white" />
+    </button>
+    <button 
+      type="button" 
+      className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+      style={{
+        border: '1px solid #ddd',
+        width: '35px',
+        height: '35px',
+        margin: '0 3px'
+      }}
+    >
+      <Linkedin className="w-4 h-4 text-white" />
+    </button>
+  </div>
               
               <span 
                 className="mb-4 block"
