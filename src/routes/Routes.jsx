@@ -7,8 +7,7 @@ import CardList from '../card/CardList';
 import AllPosts from '../components/AllPosts';
 import Home from '../components/Home';
 import PostView from '../components/PostView';
-import Login from '../components/auth/Login';
-import Signup from '../components/auth/Signup';
+import SlidingAuth from '../components/auth/SlidingAuth';
 import Dashboard from '../components/Dashboard';
 import CreatePost from '../components/CreatePost';
 import Layout from '../components/Layout';
@@ -17,15 +16,15 @@ import ProtectedRoute from '../components/ProtectedRoute';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Navigate to="/home" replace />
+    element: <SlidingAuth />
   },
   {
     path: '/login',
-    element: <Login />
+    element: <SlidingAuth />
   },
   {
     path: '/signup',
-    element: <Signup />
+    element: <SlidingAuth />
   },
   {
     path: '/home',
