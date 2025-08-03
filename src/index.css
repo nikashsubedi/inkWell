@@ -1,2 +1,10 @@
 @import "tailwindcss";
+@import url('@fontsource/inter/400.css');
+@import url('@fontsource/inter/500.css');
+@import url('@fontsource/inter/600.css');
+@import url('@fontsource/inter/700.css');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
 
