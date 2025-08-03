@@ -221,8 +221,8 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 📞 Contact
 
-- **Developers**: Nikash Subedi, Harish Govindasamy, Muneeb Shah
-- **GitHub**: [@nikashsubedi](https://github.com/nikashsubedi), 
+- **Developers**: Nikash Subedi, Harish Govindasamy [ Team leader], Muneeb Shah
+- **GitHub**: [@nikashsubedi](https://github.com/nikashsubedi), [@itsharishg](https://github.com/itsharishg), [@muneebshah](https://github.com/muneeb99shah)
 - **Project Link**: [https://github.com/nikashsubedi/inkWell](https://github.com/nikashsubedi/inkWell)
 
 ---
