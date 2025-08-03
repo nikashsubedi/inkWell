@@ -109,192 +109,503 @@ const SlidingAuth = () => {
 
   return (
     <div 
-      className="min-h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center p-4"
+      className="min-h-screen flex flex-col justify-center items-center p-4"
       style={{
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80')`
+        fontFamily: "'Montserrat', sans-serif",
+        background: '#f6f5f7',
+        backgroundImage: `url('https://images.unsplash.com/photo-1500993855538-c6a99f437aa7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=80')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        // margin: '-20px 0 50px'
       }}
     >
-      <div className={`relative bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl overflow-hidden w-full max-w-4xl min-h-[600px] transition-all duration-700 ease-in-out ${isSignUp ? 'right-panel-active' : ''}`}>
+      <div 
+        className={`container relative overflow-hidden transition-all duration-700 ease-in-out ${isSignUp ? 'right-panel-active' : ''}`}
+        style={{
+          borderRadius: '10px',
+          boxShadow: '0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22)',
+          width: '768px',
+          maxWidth: '100%',
+          minHeight: '480px',
+          opacity: 0.95
+        }}
+      >
         
-        {/* Sign Up Form */}
-        <div className={`absolute top-0 h-full w-1/2 transition-all duration-700 ease-in-out ${isSignUp ? 'translate-x-full opacity-100 z-[5]' : 'translate-x-0 opacity-0 z-[1]'}`}>
-          <form onSubmit={handleSubmit} className="bg-gray-900/90 backdrop-blur-sm flex flex-col items-center justify-center h-full px-12 text-center">
-            <div className="flex items-center mb-8">
-              <PenTool className="w-8 h-8 text-orange-400 mr-3" />
-              <h1 className="text-3xl font-bold text-white">Create Account</h1>
-            </div>
-            
-            <div className="flex space-x-3 mb-6">
-              <button type="button" className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </button>
-              <button type="button" className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                <Github className="w-5 h-5" />
-              </button>
-              <button type="button" className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </button>
-            </div>
-            
-            <span className="text-white/70 text-sm mb-6">or use your email for registration</span>
-            
-            {errors.general && (
-              <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-2 rounded-lg mb-4 text-sm">
-                {errors.general}
-              </div>
-            )}
-            
-            <div className="space-y-4 w-full max-w-xs">
-              <div>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  placeholder="Name"
-                  className="w-full bg-transparent border-none border-b border-white/50 text-center text-white placeholder-white/70 py-3 px-0 focus:border-orange-400 focus:outline-none transition-colors font-medium"
-                />
-                {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
+        {/* Sign Up Form Container */}
+        <div 
+          className={`form-container sign-up-container absolute top-0 h-full transition-all duration-700 ease-in-out`}
+          style={{
+            left: 0,
+            width: '50%',
+            zIndex: isSignUp ? 5 : 1,
+            opacity: isSignUp ? 1 : 0,
+            transform: isSignUp ? 'translateX(100%)' : 'translateX(0)'
+          }}
+        >
+          <form 
+            onSubmit={handleSubmit} 
+            className="flex flex-col justify-between items-center text-center h-full py-8 overflow-hidden"
+            style={{
+              background: 'rgba(45, 52, 54, 1.0)',
+              padding: '20px 50px',
+              maxHeight: '100%'
+            }}
+          >
+            <div className="flex-shrink-0">
+              <h1 
+                className="font-bold m-0 mb-4"
+                style={{ color: 'beige', fontSize: '24px' }}
+              >
+                Create Account
+              </h1>
+              
+              <div className="flex space-x-2 mb-4">
+                <button 
+                  type="button" 
+                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                  style={{
+                    border: '1px solid #ddd',
+                    width: '35px',
+                    height: '35px',
+                    margin: '0 3px'
+                  }}
+                >
+                  <Facebook className="w-4 h-4 text-white" />
+                </button>
+                <button 
+                  type="button" 
+                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                  style={{
+                    border: '1px solid #ddd',
+                    width: '35px',
+                    height: '35px',
+                    margin: '0 3px'
+                  }}
+                >
+                  <Github className="w-4 h-4 text-white" />
+                </button>
+                <button 
+                  type="button" 
+                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                  style={{
+                    border: '1px solid #ddd',
+                    width: '35px',
+                    height: '35px',
+                    margin: '0 3px'
+                  }}
+                >
+                  <Linkedin className="w-4 h-4 text-white" />
+                </button>
               </div>
               
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  className="w-full bg-transparent border-none border-b border-white/50 text-center text-white placeholder-white/70 py-3 px-0 focus:border-orange-400 focus:outline-none transition-colors font-medium"
-                />
-                {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
-              </div>
+              <span 
+                className="mb-4 block"
+                style={{ 
+                  fontSize: '11px', 
+                  color: 'beige' 
+                }}
+              >
+                or use your email for registration
+              </span>
+            </div>
+            
+            <div className="flex-1 w-full flex flex-col justify-center">
+              {errors.general && (
+                <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-3 py-1 rounded-lg mb-3 text-xs">
+                  {errors.general}
+                </div>
+              )}
               
-              <div>
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  placeholder="Password"
-                  className="w-full bg-transparent border-none border-b border-white/50 text-center text-white placeholder-white/70 py-3 px-0 focus:border-orange-400 focus:outline-none transition-colors font-medium"
-                />
-                {errors.password && <p className="text-red-400 text-xs mt-1">{errors.password}</p>}
-              </div>
-              
-              <div>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  placeholder="Confirm Password"
-                  className="w-full bg-transparent border-none border-b border-white/50 text-center text-white placeholder-white/70 py-3 px-0 focus:border-orange-400 focus:outline-none transition-colors font-medium"
-                />
-                {errors.confirmPassword && <p className="text-red-400 text-xs mt-1">{errors.confirmPassword}</p>}
+              <div className="space-y-3 w-full flex flex-col items-center">
+                <div className="w-full flex flex-col items-center">
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Name"
+                    className="outline-none transition-all duration-500 focus:border-orange-400"
+                    style={{
+                      width: '220px',
+                      textAlign: 'center',
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid #fff',
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '14px',
+                      fontWeight: 'bold',
+                      padding: '8px 0',
+                      color: '#fff'
+                    }}
+                  />
+                  {errors.name && (
+                    <p className="text-red-400 text-xs mt-1 h-4 leading-4">{errors.name}</p>
+                  )}
+                  {!errors.name && <div className="h-4"></div>}
+                </div>
+                
+                <div className="w-full flex flex-col items-center">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email"
+                    className="outline-none transition-all duration-500 focus:border-orange-400"
+                    style={{
+                      width: '220px',
+                      textAlign: 'center',
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid #fff',
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '14px',
+                      fontWeight: 'bold',
+                      padding: '8px 0',
+                      color: '#fff'
+                    }}
+                  />
+                  {errors.email && (
+                    <p className="text-red-400 text-xs mt-1 h-4 leading-4">{errors.email}</p>
+                  )}
+                  {!errors.email && <div className="h-4"></div>}
+                </div>
+                
+                <div className="w-full flex flex-col items-center">
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    placeholder="Password"
+                    className="outline-none transition-all duration-500 focus:border-orange-400"
+                    style={{
+                      width: '220px',
+                      textAlign: 'center',
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid #fff',
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '14px',
+                      fontWeight: 'bold',
+                      padding: '8px 0',
+                      color: '#fff'
+                    }}
+                  />
+                  {errors.password && (
+                    <p className="text-red-400 text-xs mt-1 h-4 leading-4">{errors.password}</p>
+                  )}
+                  {!errors.password && <div className="h-4"></div>}
+                </div>
+                
+                <div className="w-full flex flex-col items-center">
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    onChange={handleInputChange}
+                    placeholder="Confirm Password"
+                    className="outline-none transition-all duration-500 focus:border-orange-400"
+                    style={{
+                      width: '220px',
+                      textAlign: 'center',
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid #fff',
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '14px',
+                      fontWeight: 'bold',
+                      padding: '8px 0',
+                      color: '#fff'
+                    }}
+                  />
+                  {errors.confirmPassword && (
+                    <p className="text-red-400 text-xs mt-1 h-4 leading-4">{errors.confirmPassword}</p>
+                  )}
+                  {!errors.confirmPassword && <div className="h-4"></div>}
+                </div>
               </div>
             </div>
             
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="mt-8 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-3 px-12 rounded-full uppercase tracking-wider text-sm transition-all duration-200 disabled:opacity-50 active:scale-95"
-            >
-              {isLoading ? 'Creating...' : 'Sign Up'}
-            </button>
+            <div className="flex-shrink-0">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="text-white font-bold uppercase transition-transform duration-75 ease-in active:scale-95 focus:outline-none hover:shadow-lg"
+                style={{
+                  borderRadius: '20px',
+                  border: '1px solid #ff4b2b',
+                  background: '#ff4b2b',
+                  fontSize: '11px',
+                  padding: '10px 35px',
+                  letterSpacing: '1px',
+                  opacity: isLoading ? 0.5 : 1
+                }}
+              >
+                {isLoading ? 'Creating...' : 'Sign Up'}
+              </button>
+            </div>
           </form>
         </div>
 
-        {/* Sign In Form */}
-        <div className={`absolute top-0 left-0 h-full w-1/2 z-[2] transition-all duration-700 ease-in-out ${isSignUp ? 'translate-x-full' : 'translate-x-0'}`}>
-          <form onSubmit={handleSubmit} className="bg-gray-900/90 backdrop-blur-sm flex flex-col items-center justify-center h-full px-12 text-center">
-            <div className="flex items-center mb-8">
-              <PenTool className="w-8 h-8 text-orange-400 mr-3" />
-              <h1 className="text-3xl font-bold text-white">Sign In</h1>
-            </div>
-            
-            <div className="flex space-x-3 mb-6">
-              <button type="button" className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                <Facebook className="w-5 h-5" />
-              </button>
-              <button type="button" className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                <Github className="w-5 h-5" />
-              </button>
-              <button type="button" className="w-10 h-10 border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white/10 transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </button>
-            </div>
-            
-            <span className="text-white/70 text-sm mb-6">or use your account</span>
-            
-            {errors.general && (
-              <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-2 rounded-lg mb-4 text-sm">
-                {errors.general}
-              </div>
-            )}
-            
-            <div className="space-y-4 w-full max-w-xs">
-              <div>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  placeholder="Email"
-                  className="w-full bg-transparent border-none border-b border-white/50 text-center text-white placeholder-white/70 py-3 px-0 focus:border-orange-400 focus:outline-none transition-colors font-medium"
-                />
-                {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+        {/* Sign In Form Container */}
+        <div 
+          className={`form-container sign-in-container absolute top-0 h-full transition-all duration-700 ease-in-out`}
+          style={{
+            left: 0,
+            width: '50%',
+            zIndex: 2,
+            transform: isSignUp ? 'translateX(100%)' : 'translateX(0)'
+          }}
+        >
+          <form 
+            onSubmit={handleSubmit} 
+            className="flex flex-col justify-between items-center text-center h-full py-8 overflow-hidden"
+            style={{
+              background: 'rgba(45, 52, 54, 1.0)',
+              padding: '30px 50px',
+              maxHeight: '100%'
+            }}
+          >
+            <div className="flex-shrink-0">
+              <h1 
+                className="font-bold m-0 mb-6"
+                style={{ color: 'beige', fontSize: '28px' }}
+              >
+                Sign in
+              </h1>
+              
+              <div className="flex space-x-2 mb-6">
+                <button 
+                  type="button" 
+                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                  style={{
+                    border: '1px solid #ddd',
+                    width: '40px',
+                    height: '40px',
+                    margin: '0 5px'
+                  }}
+                >
+                  <Facebook className="w-5 h-5 text-white" />
+                </button>
+                <button 
+                  type="button" 
+                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                  style={{
+                    border: '1px solid #ddd',
+                    width: '40px',
+                    height: '40px',
+                    margin: '0 5px'
+                  }}
+                >
+                  <Github className="w-5 h-5 text-white" />
+                </button>
+                <button 
+                  type="button" 
+                  className="flex items-center justify-center rounded-full transition-colors hover:bg-white/10"
+                  style={{
+                    border: '1px solid #ddd',
+                    width: '40px',
+                    height: '40px',
+                    margin: '0 5px'
+                  }}
+                >
+                  <Linkedin className="w-5 h-5 text-white" />
+                </button>
               </div>
               
-              <div>
-                <input
-                  type="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  placeholder="Password"
-                  className="w-full bg-transparent border-none border-b border-white/50 text-center text-white placeholder-white/70 py-3 px-0 focus:border-orange-400 focus:outline-none transition-colors font-medium"
-                />
-                {errors.password && <p className="text-red-400 text-xs mt-1">{errors.password}</p>}
+              <span 
+                className="mb-6 block"
+                style={{ 
+                  fontSize: '12px', 
+                  color: 'beige' 
+                }}
+              >
+                or use your account
+              </span>
+            </div>
+            
+            <div className="flex-1 w-full flex flex-col justify-center">
+              {errors.general && (
+                <div className="bg-red-500/20 border border-red-500/50 text-red-200 px-4 py-2 rounded-lg mb-4 text-sm">
+                  {errors.general}
+                </div>
+              )}
+              
+              <div className="space-y-6 w-full flex flex-col items-center">
+                <div className="w-full flex flex-col items-center">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="Email"
+                    className="outline-none transition-all duration-500 focus:border-orange-400"
+                    style={{
+                      width: '240px',
+                      textAlign: 'center',
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid #fff',
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      padding: '10px 0',
+                      color: '#fff'
+                    }}
+                  />
+                  {errors.email && (
+                    <p className="text-red-400 text-xs mt-2 h-4 leading-4">{errors.email}</p>
+                  )}
+                  {!errors.email && <div className="h-4"></div>}
+                </div>
+                
+                <div className="w-full flex flex-col items-center">
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleInputChange}
+                    placeholder="Password"
+                    className="outline-none transition-all duration-500 focus:border-orange-400"
+                    style={{
+                      width: '240px',
+                      textAlign: 'center',
+                      background: 'transparent',
+                      border: 'none',
+                      borderBottom: '1px solid #fff',
+                      fontFamily: "'Montserrat', sans-serif",
+                      fontSize: '16px',
+                      fontWeight: 'bold',
+                      padding: '10px 0',
+                      color: '#fff'
+                    }}
+                  />
+                  {errors.password && (
+                    <p className="text-red-400 text-xs mt-2 h-4 leading-4">{errors.password}</p>
+                  )}
+                  {!errors.password && <div className="h-4"></div>}
+                </div>
               </div>
             </div>
             
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="mt-8 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-3 px-12 rounded-full uppercase tracking-wider text-sm transition-all duration-200 disabled:opacity-50 active:scale-95"
-            >
-              {isLoading ? 'Signing In...' : 'Sign In'}
-            </button>
+            <div className="flex-shrink-0">
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="text-white font-bold uppercase transition-transform duration-75 ease-in active:scale-95 focus:outline-none hover:shadow-lg"
+                style={{
+                  borderRadius: '20px',
+                  border: '1px solid #ff4b2b',
+                  background: '#ff4b2b',
+                  fontSize: '12px',
+                  padding: '12px 45px',
+                  letterSpacing: '1px',
+                  opacity: isLoading ? 0.5 : 1
+                }}
+              >
+                {isLoading ? 'Signing In...' : 'Sign In'}
+              </button>
+            </div>
           </form>
         </div>
 
         {/* Overlay Container */}
-        <div className={`absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-transform duration-700 ease-in-out z-[100] ${isSignUp ? '-translate-x-full' : 'translate-x-0'}`}>
-          <div className={`bg-gradient-to-r from-orange-500 to-red-500 relative -left-full h-full w-[200%] transition-transform duration-700 ease-in-out ${isSignUp ? 'translate-x-1/2' : 'translate-x-0'}`}>
+        <div 
+          className={`overlay-container absolute top-0 h-full overflow-hidden transition-transform duration-700 ease-in-out`}
+          style={{
+            left: '50%',
+            width: '50%',
+            zIndex: 100,
+            transform: isSignUp ? 'translateX(-100%)' : 'translateX(0)'
+          }}
+        >
+          <div 
+            className={`overlay absolute h-full transition-transform duration-700 ease-in-out text-white`}
+            style={{
+              background: 'linear-gradient(to right, #ff4b2b, #ff416c)',
+              left: '-100%',
+              width: '200%',
+              transform: isSignUp ? 'translateX(50%)' : 'translateX(0)'
+            }}
+          >
             
-            {/* Welcome Back Panel */}
-            <div className={`absolute top-0 flex flex-col justify-center items-center px-10 text-center h-full w-1/2 transition-transform duration-700 ease-in-out ${isSignUp ? 'translate-x-0' : '-translate-x-1/5'}`}>
-              <h1 className="text-3xl font-bold text-white mb-4">Welcome Back!</h1>
-              <p className="text-white/90 mb-8 leading-relaxed font-medium">
+            {/* Welcome Back Panel (Left) */}
+            <div 
+              className={`overlay-panel overlay-left absolute top-0 flex flex-col justify-center items-center text-center h-full transition-transform duration-700 ease-in-out`}
+              style={{
+                padding: '0 40px',
+                width: '50%',
+                transform: isSignUp ? 'translateX(0)' : 'translateX(-20%)'
+              }}
+            >
+              <h1 className="font-bold m-0" style={{ color: 'white' }}>Welcome Back!</h1>
+              <p 
+                className="font-bold leading-5 tracking-wide my-5"
+                style={{
+                  fontSize: '14px',
+                  lineHeight: '20px',
+                  letterSpacing: '0.5px',
+                  margin: '20px 0 30px'
+                }}
+              >
                 To keep connected with us please login with your personal info
               </p>
               <button
                 onClick={toggleMode}
-                className="bg-transparent border-2 border-white text-white font-bold py-3 px-12 rounded-full uppercase tracking-wider text-sm hover:bg-white hover:text-orange-500 transition-all duration-300"
+                className="font-bold uppercase transition-transform duration-75 ease-in active:scale-95 focus:outline-none hover:bg-white hover:text-red-500"
+                style={{
+                  borderRadius: '20px',
+                  border: '1px solid #fff',
+                  background: 'transparent',
+                  borderColor: '#fff',
+                  color: '#fff',
+                  fontSize: '12px',
+                  padding: '12px 45px',
+                  letterSpacing: '1px'
+                }}
               >
                 Sign In
               </button>
             </div>
 
-            {/* Hello Friend Panel */}
-            <div className={`absolute top-0 right-0 flex flex-col justify-center items-center px-10 text-center h-full w-1/2 transition-transform duration-700 ease-in-out ${isSignUp ? 'translate-x-1/5' : 'translate-x-0'}`}>
-              <h1 className="text-3xl font-bold text-white mb-4">Hello, Friend!</h1>
-              <p className="text-white/90 mb-8 leading-relaxed font-medium">
-                Enter your personal details and start your journey with us
+            {/* Hello Friend Panel (Right) */}
+            <div 
+              className={`overlay-panel overlay-right absolute top-0 flex flex-col justify-center items-center text-center h-full transition-transform duration-700 ease-in-out`}
+              style={{
+                right: 0,
+                padding: '0 40px',
+                width: '50%',
+                transform: isSignUp ? 'translateX(20%)' : 'translateX(0)'
+              }}
+            >
+              <h1 className="font-bold m-0" style={{ color: 'white' }}>Hello, Friend!</h1>
+              <p 
+                className="font-bold leading-5 tracking-wide my-5"
+                style={{
+                  fontSize: '14px',
+                  lineHeight: '20px',
+                  letterSpacing: '0.5px',
+                  margin: '20px 0 30px'
+                }}
+              >
+                Enter your personal details and start journey with us
               </p>
               <button
                 onClick={toggleMode}
-                className="bg-transparent border-2 border-white text-white font-bold py-3 px-12 rounded-full uppercase tracking-wider text-sm hover:bg-white hover:text-orange-500 transition-all duration-300"
+                className="font-bold uppercase transition-transform duration-75 ease-in active:scale-95 focus:outline-none hover:bg-white hover:text-red-500"
+                style={{
+                  borderRadius: '20px',
+                  border: '1px solid #fff',
+                  background: 'transparent',
+                  borderColor: '#fff',
+                  color: '#fff',
+                  fontSize: '12px',
+                  padding: '12px 45px',
+                  letterSpacing: '1px'
+                }}
               >
                 Sign Up
               </button>
