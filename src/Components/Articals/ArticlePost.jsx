@@ -9,21 +9,7 @@ export default function ArticlePost ({ articles, onBack, onEdit, onDelete }) {
 
   const [localArticle, setArticle] = useState(null);
 
-  // useEffect(() => {
-  //   const found = mockData.find((a) => a.id.toString() === id);
-  //   setArticle(found);
-  // }, [id]);
-
-
-//   useEffect(() => {
-//   const allArticles = [
-//     ...(mockData.localArticle || []),
-//     ...(mockData.featuredArticles || []),
-//     ...(mockData.trendingArticles || []),
-//   ];
-//   const found = allArticles.find((a) => a.id.toString() === id);
-//   setArticle(found);
-// }, [id]);
+ 
 
 useEffect(() => {
   const found = articles.find((a) => a.id.toString() === id);
