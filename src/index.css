@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+ @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@600;700&display=swap');
+        
+        @layer base {
+            html {
+                font-family: 'Open Sans', sans-serif;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Poppins', sans-serif;
+            }
+        }
+        
+        :root {
+            --color-primary-blue: #A7C7E7;
+            --color-light-blue: #EBF4F8;
+            --color-dark-grey: #333333;
+            --color-medium-grey: #6B7280;
+            --color-light-grey: #F3F4F6;
+            --color-white: #FFFFFF;
+            --color-footer-bg-light: #2C3E50;
+            --color-footer-bg-dark: #121212;
+            --color-footer-text-light: #E0E0E0;
+            --color-footer-text-dark: #B0B0B0;
+        }
+
+        .bg-primary-blue { background-color: var(--color-primary-blue); }
+        .bg-light-blue { background-color: var(--color-light-blue); }
+        .text-dark-grey { color: var(--color-dark-grey); }
+        .text-medium-grey { color: var(--color-medium-grey); }
+        .bg-light-grey { background-color: var(--color-light-grey); }
+
+        footer {
+            background-color: var(--color-footer-bg-light);
+            color: var(--color-footer-text-light);
+        }
+        footer h5 { color: var(--color-white); }
+        footer a { color: var(--color-footer-text-light); }
+        footer a:hover { color: var(--color-primary-blue); }
+
+        body.dark {
+            background-color: #1a202c;
+            color: #e2e8f0;
+        }
+        body.dark .text-dark-grey { color: #e2e8f0; }
+        body.dark .text-medium-grey { color: #cbd5e0; }
+        body.dark .bg-white { background-color: #2d3748; }
+        body.dark .bg-light-blue { background-color: #4a5568; }
+        body.dark .bg-light-grey { background-color: #2d3748; }
+        body.dark footer {
+            background-color: var(--color-footer-bg-dark);
+            color: var(--color-footer-text-dark);
+        }
+        body.dark footer a { color: var(--color-footer-text-dark); }
+        body.dark footer a:hover { color: var(--color-primary-blue); }
+
+        .featured-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--color-medium-grey);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .featured-dot.active {
+            background-color: var(--color-primary-blue);
+        }
+        body.dark .featured-dot {
+            background-color: #cbd5e0;
+        }
+        body.dark .featured-dot.active {
+            background-color: #63b3ed;
+        }
+        .explore-category-card {
+            background-color: var(--color-white);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            text-align: center;
+            height: 120px;
+        }
+        .explore-category-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-0.125rem);
+            background-color: var(--color-light-blue);
+            color: var(--color-primary-blue);
+        }
+        body.dark .explore-category-card { background-color: #2d3748; }
+        body.dark .explore-category-card:hover { background-color: #4a5568; color: #63b3ed; }
