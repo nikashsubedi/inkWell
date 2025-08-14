@@ -12,7 +12,10 @@
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.11",
     "lucide-react": "^0.526.0",
+<<<<<<< HEAD
     "marked": "^16.1.2",
+=======
+>>>>>>> e70b0b413c69a52b2a92725d65b71f6672cc69da
     "postcss": "^8.5.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
